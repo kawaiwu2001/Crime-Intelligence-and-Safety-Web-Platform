@@ -8,9 +8,7 @@ const CrimePrediction = () => {
   useEffect(() => {
     const fetchChart = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/crime-prediction"
-        );
+        const response = await axios.get("/api/crime-prediction");
         setChartHtml(response.data.chart); // Set the HTML for the chart
         setLoading(false);
       } catch (error) {
