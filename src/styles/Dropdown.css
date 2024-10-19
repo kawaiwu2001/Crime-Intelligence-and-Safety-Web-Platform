@@ -1,0 +1,54 @@
+/* Styles for the outer container */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dropdown h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Styles for the dropdown menu */
+select {
+    width: 250px;
+    padding: 8px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    /* Rounded corners */
+    background-color: #f9f9f9;
+    color: #333;
+    appearance: none;
+    /* Hide the default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'><polygon points='70,100 40,40 100,40' style='fill:%23333'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+select:hover {
+    border-color: #888;
+}
+
+/* Focus effect */
+select:focus {
+    outline: none;
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the option text more readable */
+option {
+    color: #333;
+}

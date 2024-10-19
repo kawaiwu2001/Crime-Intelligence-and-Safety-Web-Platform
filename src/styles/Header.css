@@ -1,0 +1,35 @@
+/* src/styles/Header.css */
+
+/* Header section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white; /* Background color */
+    color: black; /* Font color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it's on top */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    width: auto;
+    object-fit: contain;
+}
+
+.left-logo {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: auto;
+}
+
+.right-logo {
+    height: 40px;
+    margin-left: auto;
+}
