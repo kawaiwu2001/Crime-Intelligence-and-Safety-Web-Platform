@@ -17,7 +17,7 @@ LOCAL_LAST30_FILE = "crime_data_last30.json"
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Your React app's origin
+    allow_origins=["http://localhost:3000", "http://54.225.57.155"],  # Your React app's origin
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
@@ -83,7 +83,7 @@ def calculate_trends():
     return trends_data
 
 # Endpoint to fetch and save the last 30 days' data
-@app.get("/")
+@app.get("api/")
 async def fetch_last30_data():
     async with httpx.AsyncClient() as client:
         response = await client.get(DATA_LAST30_URL)
@@ -97,7 +97,7 @@ async def fetch_last30_data():
             return {"error": "Failed to fetch data", "status_code": response.status_code}
 
 # Calculate crime data for dashboard
-@app.get("/dashboard")
+@app.get("api/dashboard")
 def analyze_data():
     if not os.path.exists(LOCAL_LAST30_FILE):
         return {"error": "Data file not found. Please fetch data first."}
@@ -167,7 +167,7 @@ def analyze_data():
         }
     }
 
-@app.get("/crime-data")
+@app.get("api/crime-data")
 def get_crime_data(crimeType: str = None, zone: str = None, startDate: str = None, endDate: str = None):
     if not os.path.exists(LOCAL_LAST30_FILE):
         return {"error": "Data file not found. Please fetch data first."}
@@ -222,7 +222,7 @@ def get_crime_data(crimeType: str = None, zone: str = None, startDate: str = Non
 
     return filtered_data
 
-@app.get("/crime-types")
+@app.get("api/crime-types")
 def get_crime_types():
     if not os.path.exists(LOCAL_LAST30_FILE):
         return {"error": "Data file not found. Please fetch data first."}
@@ -267,7 +267,7 @@ def establish_connection():
         return None
 
 # API endpoint to fetch total crimes by shift
-@app.get("/crime-prediction")
+@app.get("api/crime-prediction")
 def get_crime_prediction_data():
     conn = establish_connection()
     if conn is None:
